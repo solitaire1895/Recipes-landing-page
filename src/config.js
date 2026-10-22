@@ -6,8 +6,9 @@ export const CONFIG = {
   checkoutUrl: 'https://yummy-delice.mymaketou.shop/en/products/lesdelicesdeyummychefs/checkout',
   price: '1 500 FCFA',
   oldPrice: '3 000 FCFA',
-  whatsapp: '', // ex. '2376XXXXXXXX' — laisser vide pour masquer
-  email: '[À REMPLACER : email de contact]',
+  phone: '+237 673 77 85 95',
+  whatsapp: 'https://wa.me/qr/ENY5A72JU76YN1',
+  email: 'yummydelice@gmail.com',
   pages: 284,
   recipes: '160+',
 }

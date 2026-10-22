@@ -171,7 +171,7 @@ function Hero() {
         <video className="h-full w-full object-cover" src="/media/v1.mp4" poster="/media/v1.jpg" autoPlay muted loop playsInline preload="metadata" />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/50 to-forest/20" />
-      <div className="relative mx-auto w-full max-w-7xl px-4 pb-16 pt-32 sm:px-8 sm:pb-24">
+      <div className="relative mx-auto w-full max-w-7xl px-4 pl-[21px] pb-16 pt-32 sm:px-8 sm:pl-[37px] sm:pb-24">
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} className="eyebrow mb-5">
           Ebook · {CONFIG.pages} pages · {CONFIG.recipes} recettes
         </motion.p>
@@ -185,7 +185,7 @@ function Hero() {
           Ndolé, Eru, Poulet DG, Koki, beignets, jus de foléré… Toutes les recettes du pays expliquées pas à pas, dans un seul livre à garder sur ton téléphone.
         </FadeUp>
         <FadeUp delay={1.2} className="mt-8 flex flex-wrap items-center gap-5">
-          <BuyButton>Je télécharge le livre</BuyButton>
+          <BuyButton className="max-sm:gap-1.5 max-sm:px-5 max-sm:py-2.5 max-sm:text-[9.5px]">Je télécharge le livre</BuyButton>
           <span className="flex items-baseline gap-3 font-display font-bold text-cream">
             {CONFIG.oldPrice && <span className="text-lg text-cream/60 line-through">{CONFIG.oldPrice}</span>}
             <span className="text-2xl text-flame">{CONFIG.price}</span>
@@ -453,7 +453,11 @@ function Footer() {
     <footer className="bg-forest px-4 pb-28 pt-12 text-cream/70 sm:px-8 md:pb-12">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-sm md:flex-row">
         <span className="font-display font-bold text-cream">Yummy<span className="text-flame">.</span>Chefs</span>
-        <span>Contact : {CONFIG.email}{CONFIG.whatsapp && <> · <a className="underline" href={`https://wa.me/${CONFIG.whatsapp}`}>WhatsApp</a></>}</span>
+        <span className="flex flex-wrap justify-center gap-x-4 gap-y-1">
+          <a className="hover:text-flame" href={`mailto:${CONFIG.email}`}>{CONFIG.email}</a>
+          <a className="hover:text-flame" href={`tel:${CONFIG.phone.replace(/ /g, "")}`}>{CONFIG.phone}</a>
+          <a className="hover:text-flame" href={CONFIG.whatsapp} target="_blank" rel="noopener">WhatsApp</a>
+        </span>
         <span>© {new Date().getFullYear()} {CONFIG.brand}. Tous droits réservés.</span>
       </div>
     </footer>
