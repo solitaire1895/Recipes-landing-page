@@ -69,15 +69,33 @@ const LINKS = [['#chapitres', 'Chapitres'], ['#contenu', 'Contenu'], ['#prix', '
 
 // Bright pulsing pill with the promo price, so it stands out over the hero video
 function NavBuy() {
+  // On click: colors flip like a switch, then we go to the checkout
+  const [on, setOn] = useState(false)
+  const href = checkoutHref()
+  const click = (e) => {
+    e.preventDefault()
+    setOn(true)
+    setTimeout(() => { window.location.href = href }, 350)
+  }
   return (
-    <a href={checkoutHref()} data-cta className="group relative inline-flex items-center gap-2 rounded-full bg-flame py-2.5 pl-4 pr-2.5 font-display text-xs font-bold uppercase text-cream shadow-[0_0_0_3px_rgba(255,250,229,.35)]">
-      <span className="absolute inset-0 animate-ping rounded-full bg-flame opacity-40 [animation-duration:2s]" />
+    <motion.a
+      href={href} data-cta onClick={click}
+      whileTap={{ scale: 0.88 }}
+      animate={{ backgroundColor: on ? '#fffae5' : '#ff8b20', color: on ? '#335230' : '#fffae5' }}
+      transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+      className="relative inline-flex items-center gap-1.5 rounded-full py-1 pl-2.5 pr-1 font-display text-[9px] font-bold uppercase shadow-[0_0_0_2px_rgba(255,250,229,.35)] sm:gap-2 sm:py-2.5 sm:pl-4 sm:pr-2.5 sm:text-xs"
+    >
+      {!on && <span className="absolute inset-0 animate-ping rounded-full bg-flame opacity-40 [animation-duration:2s]" />}
       <span className="relative">Acheter</span>
-      <span className="relative flex items-center gap-1 rounded-full bg-cream px-2.5 py-1 text-forest">
-        {CONFIG.price}
-        <motion.span animate={{ x: [0, 3, 0] }} transition={{ repeat: Infinity, duration: 1.2 }}>→</motion.span>
-      </span>
-    </a>
+      <motion.span
+        animate={{ backgroundColor: on ? '#ff8b20' : '#fffae5', color: on ? '#fffae5' : '#335230', rotate: on ? 360 : 0 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 18 }}
+        className="relative flex items-center gap-1 rounded-full px-1.5 py-0.5 sm:px-2.5 sm:py-1"
+      >
+        {on ? '✓' : CONFIG.price}
+        {!on && <motion.span animate={{ x: [0, 3, 0] }} transition={{ repeat: Infinity, duration: 1.2 }}>→</motion.span>}
+      </motion.span>
+    </motion.a>
   )
 }
 
