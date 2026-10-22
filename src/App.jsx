@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Lenis from 'lenis'
 import { CONFIG, checkoutHref } from './config'
+import ReviewStack from './components/ReviewStack'
+import { REVIEWS, reviewsReady } from './reviews'
 import { RevealText, FadeUp, BuyButton, Todo } from './components/Motion'
 
 const m = (n) => `/media/${n}.webp`
@@ -354,22 +356,15 @@ function Inside() {
 }
 
 function Testimonials() {
-  // Aucune preuve inventée : à remplir avec de vrais retours clients.
+  // Aucune preuve inventée : masqué en production tant que les avis ne sont pas réels.
+  if (!reviewsReady && !import.meta.env.DEV) return null
   return (
-    <section className="bg-butter py-24 md:py-32">
+    <section className="overflow-hidden bg-butter py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <p className="eyebrow mb-4 text-center">Ils cuisinent avec</p>
         <RevealText text="Ce qu’en disent les lecteurs" className="h-section mb-14 text-center" />
-        <div className="grid gap-6 md:grid-cols-3">
-          {[1, 2, 3].map((i) => (
-            <FadeUp key={i} delay={i * 0.1}>
-              <figure className="h-full rounded-[2rem] bg-cream p-8">
-                <blockquote className="text-lg text-forest/80">« [À REMPLACER : vrai témoignage client n°{i}] »</blockquote>
-                <figcaption className="mt-6 font-display text-sm font-bold">[À REMPLACER : prénom, ville] <Todo /></figcaption>
-              </figure>
-            </FadeUp>
-          ))}
-        </div>
+        {!reviewsReady && <p className="mb-8 text-center"><Todo>Avis à remplacer dans src/reviews.js</Todo></p>}
+        <FadeUp><ReviewStack reviews={REVIEWS} /></FadeUp>
       </div>
     </section>
   )
