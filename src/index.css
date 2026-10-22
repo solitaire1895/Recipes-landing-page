@@ -16,7 +16,7 @@ body { @apply bg-cream text-forest font-sans antialiased; overflow-x: hidden; }
 }
 
 /* fill-up hover like the template buttons */
-.btn::before { content: ''; position: absolute; inset: 0; background: #335230; transform: translateY(101%); transition: transform .4s cubic-bezier(.2,.8,.2,1); border-radius: inherit; }
+.btn::before { content: ''; position: absolute; inset: 0; background: #e06a00; transform: translateY(101%); transition: transform .4s cubic-bezier(.2,.8,.2,1); border-radius: inherit; }
 .btn-cream::before { background: #ff8b20; }
 .btn:hover::before { transform: translateY(0); }
 .btn > * { position: relative; z-index: 1; }

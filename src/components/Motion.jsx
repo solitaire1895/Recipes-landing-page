@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { checkoutHref } from '../config'
 
@@ -44,12 +45,29 @@ export function FadeUp({ children, className = '', delay = 0, y = 40 }) {
   )
 }
 
+// Click: press, ripple burst from the tap point, arrow flies out, then checkout
 export function BuyButton({ children = 'Je veux le livre', variant = 'flame', className = '' }) {
+  const [ripple, setRipple] = useState(null)
+  const href = checkoutHref()
+  const click = (e) => {
+    e.preventDefault()
+    const r = e.currentTarget.getBoundingClientRect()
+    setRipple({ x: e.clientX - r.left, y: e.clientY - r.top, key: Date.now() })
+    setTimeout(() => { window.location.href = href }, 450)
+  }
   return (
-    <a href={checkoutHref()} className={`btn-${variant} ${className}`} data-cta>
+    <motion.a href={href} onClick={click} whileTap={{ scale: 0.92 }} className={`btn-${variant} ${className}`} data-cta>
+      {ripple && (
+        <motion.span
+          key={ripple.key}
+          initial={{ scale: 0, opacity: 0.6 }} animate={{ scale: 12, opacity: 0 }} transition={{ duration: 0.6 }}
+          className="pointer-events-none absolute h-10 w-10 rounded-full bg-cream"
+          style={{ left: ripple.x - 20, top: ripple.y - 20 }}
+        />
+      )}
       <span>{children}</span>
-      <span aria-hidden>→</span>
-    </a>
+      <motion.span aria-hidden animate={ripple ? { x: [0, -4, 40], opacity: [1, 1, 0] } : { x: 0 }} transition={{ duration: 0.45 }}>→</motion.span>
+    </motion.a>
   )
 }
 
