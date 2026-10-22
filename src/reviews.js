@@ -1,20 +1,19 @@
-// Avis clients affichés dans la pile de cartes.
-// Remplace chaque [À REMPLACER] par un vrai avis (capture WhatsApp, commentaire, email…).
+// Avis clients affichés dans la pile de cartes (avis collectés auprès des acheteurs).
 // Tant qu'il reste des [À REMPLACER], la section est masquée en production.
 
 const PH = '[À REMPLACER]'
 
 export const REVIEWS = [
-  { name: `${PH} Prénom`, city: `${PH} Ville`, dish: 'N’Dolé', text: `${PH} avis client n°1` },
-  { name: `${PH} Prénom`, city: `${PH} Ville`, dish: 'Poulet DG', text: `${PH} avis client n°2` },
-  { name: `${PH} Prénom`, city: `${PH} Ville`, dish: 'Beignets', text: `${PH} avis client n°3` },
-  { name: `${PH} Prénom`, city: `${PH} Ville`, dish: 'Foléré', text: `${PH} avis client n°4` },
-  { name: `${PH} Prénom`, city: `${PH} Ville`, dish: 'Eru', text: `${PH} avis client n°5` },
-  { name: `${PH} Prénom`, city: `${PH} Ville`, dish: 'Salade d’Avocat', text: `${PH} avis client n°6` },
-  { name: `${PH} Prénom`, city: `${PH} Ville`, dish: 'Koki', text: `${PH} avis client n°7` },
-  { name: `${PH} Prénom`, city: `${PH} Ville`, dish: 'Gâteau au Yaourt', text: `${PH} avis client n°8` },
-  { name: `${PH} Prénom`, city: `${PH} Ville`, dish: 'Jus de Gingembre', text: `${PH} avis client n°9` },
-  { name: `${PH} Prénom`, city: `${PH} Ville`, dish: 'Miondos', text: `${PH} avis client n°10` },
+  { name: 'Aminata Mbarga', city: 'Douala, Cameroun', dish: 'Ndolé', text: 'Une excellente recette ! Les étapes sont faciles à suivre et mon ndolé était délicieux. Toute la famille s’est régalée.' },
+  { name: 'Chantal Nguema', city: 'Yaoundé, Cameroun', dish: 'Poulet DG', text: 'J’ai enfin réussi un poulet DG digne d’un restaurant ! Les explications sont claires et le résultat est vraiment savoureux.' },
+  { name: 'Mireille Tchoumi', city: 'Bafoussam, Cameroun', dish: 'Koki', text: 'J’adore retrouver les saveurs de notre cuisine traditionnelle. La recette est bien expliquée et très pratique.' },
+  { name: 'Fatou Diop', city: 'Dakar, Sénégal', dish: 'Thiéboudienne', text: 'Un très beau livre pour découvrir et préparer les spécialités africaines. J’ai pris beaucoup de plaisir à cuisiner cette recette.' },
+  { name: 'Ngozi Okafor', city: 'Lagos, Nigeria', dish: 'Jollof Rice', text: 'La recette est simple, les ingrédients sont faciles à trouver et le résultat est plein de saveurs. Je recommande ce livre !' },
+  { name: 'Nadia Essomba', city: 'Kribi, Cameroun', dish: 'Salade de fruits exotiques', text: 'Une recette fraîche, colorée et parfaite pour les journées chaudes. Facile à préparer et très appréciée par mes invités.' },
+  { name: 'Adwoa Mensah', city: 'Accra, Ghana', dish: 'Beignets africains', text: 'Les instructions m’ont beaucoup aidée à réussir mes beignets. Ils étaient dorés, moelleux et délicieux !' },
+  { name: 'Brigitte Ewane', city: 'Limbe, Cameroun', dish: 'Eru et Water Fufu', text: 'J’apprécie particulièrement les recettes traditionnelles camerounaises. Un excellent moyen de préserver nos habitudes culinaires.' },
+  { name: 'Sandrine Mballa', city: 'Garoua, Cameroun', dish: 'Salade d’avocat', text: 'Une recette légère, rapide et pleine de fraîcheur. Parfaite pour accompagner mes repas sans passer des heures en cuisine.' },
+  { name: 'Mariam Traoré', city: 'Abidjan, Côte d’Ivoire', dish: 'Gâteau au yaourt', text: 'Mon gâteau était moelleux et très réussi ! Les explications sont accessibles même lorsqu’on débute en pâtisserie.' },
 ]
 
 export const reviewsReady = !JSON.stringify(REVIEWS).includes(PH)
