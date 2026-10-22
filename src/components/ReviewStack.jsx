@@ -70,10 +70,12 @@ function ReviewCard({ review, interactive }) {
       {/* fond dégradé flou, comme le modèle */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,#ff8b20_0%,#f6b26b_25%,#e7a3a8_50%,#b9c7dc_80%)]" />
       <div className="relative pt-20">
-        <img
-          src={`/media/${review.photo}.webp`} alt={review.dish} draggable={false}
-          className="absolute left-5 top-6 z-10 h-24 w-24 rounded-full border-4 border-cream object-cover shadow-lg"
-        />
+        <div className="absolute left-5 top-6 z-10 flex h-24 w-24 items-end justify-center overflow-hidden rounded-full border-4 border-cream bg-[#e8e6fb] shadow-lg" aria-hidden>
+          <svg viewBox="0 0 24 24" className="h-20 w-20 translate-y-2 fill-sage">
+            <circle cx="12" cy="8" r="4.5" />
+            <path d="M3 22c0-5 4-8.5 9-8.5s9 3.5 9 8.5z" />
+          </svg>
+        </div>
         <div className="rounded-[2rem] bg-white px-5 pb-5 pt-4">
           <div className="pl-[6.5rem]">
             <h3 className="truncate font-display text-lg font-semibold">{review.name}</h3>
