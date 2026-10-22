@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { checkoutHref } from '../config'
 
+// Full class names so Tailwind generates them
+const VARIANTS = { flame: 'btn btn-flame', cream: 'btn btn-cream' }
+
 const ease = [0.22, 1, 0.36, 1]
 
 // Word-by-word blur/rise reveal, as in the Maestro template headings
@@ -56,7 +59,7 @@ export function BuyButton({ children = 'Je veux le livre', variant = 'flame', cl
     setTimeout(() => { window.location.href = href }, 450)
   }
   return (
-    <motion.a href={href} onClick={click} whileTap={{ scale: 0.92 }} className={`btn-${variant} ${className}`} data-cta>
+    <motion.a href={href} onClick={click} whileTap={{ scale: 0.92 }} className={`${VARIANTS[variant]} ${className}`} data-cta>
       {ripple && (
         <motion.span
           key={ripple.key}
